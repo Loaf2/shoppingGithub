@@ -1,42 +1,126 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cart {
+    filter: brightness(0) invert(1);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.headerCart {
+    position: relative;
+    cursor: pointer;
+    transition: 200ms filter ease-in;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.headerCartContainer {
+    position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.headerCartContainer::before {
+    z-index: 2;
+    position: absolute;
+    content: attr(tooltip-content);
+    font-size:.7em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    top: -40%;
+    right: 0;
+    left: 40%;
+    bottom: 0;
+    width: 25px;
+    height: 15px;
+    border-radius: 30%;
+    background-color: #ff7d1a;
+    pointer-events: none;
 }
 
-.card {
-  padding: 2em;
+.avatarIcon {
+    border-radius: 50%;
+    transition: 150ms border ease-in-out;
+    cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.avatarIcon:hover {
+    border: 2px solid #ff7d1a;
+    transform: scale(1.1);
+}
+
+.headerCart:hover {
+    filter: brightness(0);
+}
+
+.addToCart {
+    box-shadow: 0px 0px 1px 2px hsl(25, 100%, 94%);
+    transition: 100ms opacity ease-in-out;
+}
+
+.addToCart:hover {
+    opacity: 70%;
+}
+
+.minus {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.plus {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.title {
+    transition: 200ms color ease-in-out;
+    cursor: pointer;
+}
+
+.title:hover {
+    color: black;
+}
+
+.title {
+    position: relative;   
+    z-index: 2;
+}
+
+
+.title::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    height: 5px;
+    top: 65px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #ff7d1a;
+    transition: 200ms opacity ease-in-out;
+    opacity: 0;
+}
+
+.title:hover::before {
+    opacity: 100%;
+}
+
+.selected {
+    border: 2px solid #ff7d1a;
+    border-radius: 1.1em;
+}
+
+.selected > img {
+    opacity: 50%;
+}
+
+.thumbnail {
+    transition: 200ms opacity ease-out;
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    opacity: 50%;
+}
+
+.cartDropdown {
+    box-shadow: 0px 0px 15px 1px hsl(220, 14%, 75%);
+    border-radius: 0.4vmax;
 }
